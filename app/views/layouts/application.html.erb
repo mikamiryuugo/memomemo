@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <!--文字コード-->
+    <meta charset="utf-8">
+    <!--IEでも映るようにってこと。多分-->
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <!--viewportでスマートフォンやPC画面における表示領域を表示倍率を1倍にする-->
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Memomemo</title>
+    <%= csrf_meta_tags %>
+
+    <!--link要素はスタイルシート（CSS）など外部ファイルを参照する際に使用-->
+    <!--rel属性で外部ファイルのタイプを指定-->
+    <!--hrefで外部ファイルの場所を指定。ここではCSVでbootstrap読み込み-->
+    <!--bootstrapを利用するには、BootstrapのCSSやJavaScriptを読み込むだけ-->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+    <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload' %>
+    <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
+    <!--BootstrapはjQueryを利用しているので、jQueryも読み込んでおく必要はあります。-->
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+    
+  </head>
+
+  <body>
+    <p class="notice"><%= notice %></p>
+    <p class="alert"><%= alert %></p>
+    <%= render 'layouts/navbar' %>
+    <%= yield %>
+  </body>
+</html>
