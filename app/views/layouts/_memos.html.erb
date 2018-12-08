@@ -1,0 +1,22 @@
+<ul class="media-list">
+  <% memos.each do |memo| %>
+    <li class="media">
+      <div class="media-left">
+        <img class="media-object img-rounded" src="<%= gravatar_url(memo.user, { size: 50 }) %>" alt="">
+      </div>
+      <div class="media-body">
+        <div>
+          <%= link_to memo.user.id, user_path(memo.user) %> <span class="text-muted">posted at <%= memo.created_at %></span>
+        </div>
+        <div>
+          <p><%= memo.content %></p>
+        </div>
+        <div>
+          <% if current_user == memo.user %>
+            <%= link_to "削除", memo, method: :delete, data: { confirm: "本当に削除しますか？"}, class: 'btn btn-danger btn-xs' %>
+          <% end %>
+        </div>
+      </div>
+    </li>
+  <% end %>
+</ul>
