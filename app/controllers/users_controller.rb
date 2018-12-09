@@ -7,4 +7,12 @@ class UsersController < ApplicationController
     #devise入れているのでcurrent_user使用。@user = User.find(params[:id])だと他のユーザからも見れてしまうので。
     @user = current_user
   end
+  
+  # def edit
+  #   @user = current_user
+  # end
+  
+  def update
+  end
+  
 end

@@ -4,4 +4,5 @@ Rails.application.routes.draw do
   root to: "toppages#index"
   resources :users
   resources :memos
+  resources :profiles, only: [:new, :create]
 end
