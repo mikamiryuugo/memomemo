@@ -11,17 +11,18 @@ class MemosController < ApplicationController
     end
   end
 
-  def update
-    @memo = current_user.memos
-    @memo.assign_attributes(memo_params) 
-    if @memo.save
-      flash[:success] = "メモを更新しました"
-      redirect_to :edit
-    else
-      flash[:danger] = "メモの更新に失敗しました"
-      render :edit
-    end
-  end
+# メモの更新してないからココいらんやろ？
+  # def update
+  #   @memo = current_user.memos.find_by(id: params[:id])
+  #   @memo.assign_attributes(memo_params) 
+  #   if @memo.save
+  #     flash[:success] = "メモを更新しました"
+  #     redirect_to :edit
+  #   else
+  #     flash[:danger] = "メモの更新に失敗しました"
+  #     render :edit
+  #   end
+  # end
 
   def destroy
     @memo = current_user.memos.find_by(id: params[:id])

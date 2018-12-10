@@ -12,7 +12,7 @@ class ProfilesController < ApplicationController
        flash[:success] = "名前を登録しました"
        redirect_to root_url
       else
-       flash[:danger] = "舐めの登録に失敗しました"
+       flash[:danger] = "名前の登録に失敗しました"
        render :edit
      end
   end
