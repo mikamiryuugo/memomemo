@@ -13,4 +13,11 @@ class ApplicationController < ActionController::Base
       end
     end
 
+    def count(user)
+      @count_memos = user.memos.count
+      @count_followings = user.followings.count
+      @count_followers = user.followers.count
+    end
+    
+
 end

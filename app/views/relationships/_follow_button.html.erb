@@ -1,0 +1,23 @@
+<!--ログインuserとuserが同じじゃないとtrue-->
+<!--userは@user-->
+<% unless current_user %>
+  <% if current_user.following?(user) %>
+  <!--すでにフォロー済みなら( true )-->
+  <!--form_forでdestroyに送る時：　html: { method: :delete }でdestroyアクションに送られる　-->
+  <!--フォームで POST 以外のメソッドを使用したい場合には html: { method: :delete } のように指定します。-->
+    <%= form_for(current_user.relationships.find_by(follow_id: user.id), html: { method: :delete }) do |f| %>
+   <!--hidden_field_tag :follow_id, user.id  は、ユーザに見せないフォームの隠しデータ-->
+   <!--Controller 側では params[:follow_id] として取得-->
+   <!--hidden として送信する以外に user.id を手に入れる方法がありませんので、このようにしています。-->
+      <%= hidden_field_tag :follow_id, user.id %>
+      <%= f.submit 'Unfollow', class: 'btn btn-danger btn-block' %>
+    <% end %>
+  <% else %>
+  <!--まだフォローしていない時(false)-->
+  <!--POSTなので指定する必要なし-->
+    <%= form_for(current_user.relationships.build) do |f| %>
+      <%= hidden_field_tag :follow_id, user.id %>
+      <%= f.submit 'Follow', class: 'btn btn-primary btn-block' %>
+    <% end %>
+  <% end %>
+<% end %>
