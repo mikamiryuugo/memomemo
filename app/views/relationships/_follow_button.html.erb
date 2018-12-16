@@ -1,6 +1,6 @@
 <!--ログインuserとuserが同じじゃないとtrue-->
 <!--userは@user-->
-<% unless current_user %>
+<% unless current_user == user %>
   <% if current_user.following?(user) %>
   <!--すでにフォロー済みなら( true )-->
   <!--form_forでdestroyに送る時：　html: { method: :delete }でdestroyアクションに送られる　-->

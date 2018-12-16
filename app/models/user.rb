@@ -25,4 +25,9 @@ class User < ApplicationRecord
     self.followings.include?(other_user)
   end
   
+  # following_ids は User モデルの has_many :followings, ... によって自動的に生成されるメソッド
+  def feed_memos
+    Memo.where(user_id: self.following_ids + [self.id])
+  end
+  
 end

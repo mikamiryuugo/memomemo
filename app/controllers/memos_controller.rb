@@ -6,23 +6,11 @@ class MemosController < ApplicationController
       flash[:success] = "メモを投稿しました"
       redirect_to root_url
     else
+      @memos = current_user.feed_memos.order('created_at DESC').page(params[:page])
       flash[:danger] = "メモの投稿に失敗しました"
       render 'toppages/index'
     end
   end
-
-# メモの更新してないからココいらんやろ？
-  # def update
-  #   @memo = current_user.memos.find_by(id: params[:id])
-  #   @memo.assign_attributes(memo_params) 
-  #   if @memo.save
-  #     flash[:success] = "メモを更新しました"
-  #     redirect_to :edit
-  #   else
-  #     flash[:danger] = "メモの更新に失敗しました"
-  #     render :edit
-  #   end
-  # end
 
   def destroy
     @memo = current_user.memos.find_by(id: params[:id])
