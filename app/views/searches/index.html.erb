@@ -8,8 +8,11 @@
 
   <script>
   $(function() {
-    $.datepicker.setDefaults( $.datepicker.regional[ "ja" ] );
-    $( "#datepicker" ).datepicker();
+    $( "#datepicker" ).datepicker({
+      showOn: "both",
+      buttonImage: "download.png",
+      buttonImageOnly: true
+    });
   });
   </script>
 <p>日付: <input type="text" id="datepicker" /></p>
