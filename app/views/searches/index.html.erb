@@ -1,0 +1,18 @@
+<div class="col-xs-8">
+  <%= render 'layouts/memos', memos: @memos %>
+</div>
+
+<%= form_tag(searches_path, :method => :get) do %>
+
+<%= select_tag :name, options_for_select(@users_name) %>
+
+  <script>
+  $(function() {
+    $.datepicker.setDefaults( $.datepicker.regional[ "ja" ] );
+    $( "#datepicker" ).datepicker();
+  });
+  </script>
+<p>日付: <input type="text" id="datepicker" /></p>
+
+<%= submit_tag("検索") %>
+<% end %>

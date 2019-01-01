@@ -8,7 +8,7 @@ Rails.application.routes.draw do
       get :followers
     end
   end
-  
+  resources :searches, only: [:index]
   resources :memos
   resources :profiles, only: [:new, :create]
   resources :relationships, only: [:create, :destroy]
