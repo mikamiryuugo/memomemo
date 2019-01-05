@@ -22,7 +22,7 @@ class MemosController < ApplicationController
   private
   
   def memo_params
-    params.require(:memo).permit(:content)
+    params.require(:memo).permit(:content, :recorded_on)
   end
   
   

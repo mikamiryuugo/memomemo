@@ -3,19 +3,12 @@
 </div>
 
 <%= form_tag(searches_path, :method => :get) do %>
-
 <%= select_tag :name, options_for_select(@users_name) %>
 
-  <script>
-  $(function() {
-    $( "#datepicker" ).datepicker({
-      showOn: "both",
-      buttonImage: "download.png",
-      buttonImageOnly: true
-    });
-  });
-  </script>
-<p>日付: <input type="text" id="datepicker" /></p>
-
+<p>日付: <input type="text" data-date-format='yyyy-mm-dd' name="date" data-provide='datepicker' ></p>
 <%= submit_tag("検索") %>
 <% end %>
+
+
+
+<!--ここでフォーマットを指定したれや-->
