@@ -2,6 +2,8 @@ class MemosController < ApplicationController
   
   def create
     @memo = current_user.memos.build(memo_params)
+    @memo.update(recorded_on: Date.today)
+    
     if @memo.save
       flash[:success] = "メモを投稿しました"
       redirect_to root_url
