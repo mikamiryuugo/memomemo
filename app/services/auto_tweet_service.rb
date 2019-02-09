@@ -1,5 +1,8 @@
 class AutoTweetService
    
+  #質問 initialize作らずに、変数の定義を全部auto_tweetの中に書くのでもいいのかな？
+  # どっちのがいいんだ？
+   
   def initialize
     @users = User.all
     @tweets = ["も生き延びた", "の投稿です", "は寝てました。"]
@@ -9,7 +12,7 @@ class AutoTweetService
 
   def auto_tweet
       @users.each do |user|
-        user.memos.create(content: @tweet_yesterday + @tweets.sample, recorded_on: Date.yesterday) unless yesterday_tweet_exists?(user, @yesterday)
+        user.memos.create(content: @tweet_yesterday + @tweets.sample, recorded_on: @yesterday) unless yesterday_tweet_exists?(user, @yesterday)
       end
   end
     
