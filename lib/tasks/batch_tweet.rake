@@ -11,11 +11,8 @@ namespace :batch_tweet do
     #   user.memos.exists?(recorded_on: Date.yesterday)
     # end
   
-  
-    # if @users
-    #   @users.each do |user|
-    #     user.memos.create(content: yesterday + @tweets.sample, recorded_on: Date.yesterday) if yesterday_tweet_exist?(user)
-    #   end
+    # @users.each do |user|
+    #   user.memos.create(content: yesterday + @tweets.sample, recorded_on: Date.yesterday) if yesterday_tweet_exist?(user)
     # end
     
   

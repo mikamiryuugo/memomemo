@@ -7,7 +7,7 @@ class SearchesController < ApplicationController
     if search_name && search_date
       search_user = User.joins(:profile).find_by(profiles: {name: search_name})
       @memos = search_user.memos.where(recorded_on: search_date.to_date)
-    # 名前だけの時
+    # 名前だけの時はそのユーザの投稿全て表示
     elsif search_name
       search_user = User.joins(:profile).find_by(profiles: {name: search_name})
       @memos = search_user.memos
@@ -18,7 +18,6 @@ class SearchesController < ApplicationController
     else
       @memos = current_user.feed_memos.order('created_at DESC')
     end
-    # @users_id = User.all.map {|user| user.id}
     @users_name = User.all.map { |user| user.profile.name }
     @users_name = @users_name.unshift(" ", "全員")
  end
